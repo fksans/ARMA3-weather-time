@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ZTW">
     <Package name="main">
+        <Key ID="STR_ZTW_ApplyWeather">
+            <Original>天气立即生效</Original>
+            <English>Apply weather now</English>
+            <Chinesesimp>天气立即生效</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ApplyWeatherTooltip">
+            <Original>所有人（包括服务器）跳过剩下的天气渐变，马上到达目标天气，并刷新云层画面（会卡一下）。天气卡住不变、或者换成晴天后画面还是漆黑时用。</Original>
+            <English>Everyone (including the server) skips the rest of the weather change, jumps straight to the target weather and refreshes the cloud rendering (brief hitch). Use it when the weather seems stuck, e.g. still pitch black after switching to clear.</English>
+            <Chinesesimp>所有人（包括服务器）跳过剩下的天气渐变，马上到达目标天气，并刷新云层画面（会卡一下）。天气卡住不变、或者换成晴天后画面还是漆黑时用。</Chinesesimp>
+        </Key>
         <Key ID="STR_ZTW_Close">
             <Original>关闭</Original>
             <English>Close</English>
@@ -77,9 +87,9 @@
             <Chinesesimp>雾</Chinesesimp>
         </Key>
         <Key ID="STR_ZTW_Hint">
-            <Original>服务器和每位玩家的机器同时一点点推进时间，太阳和阴影平滑移动，不会突然跳变。勾选的天气用同一条时间轴渐变，所以&lt;t color='#ffd966'&gt;云的变化在跳过几个小时的过渡里最明显&lt;/t&gt;；只改天气时云量变化会慢一些。&lt;br/&gt;需要服务器也加载 ZEN。云量低时引擎可能不下雨。</Original>
-            <English>The server and every player's machine advance the time in small steps together, so the sun and shadows move smoothly instead of jumping. Checked weather items change on the same timeline, so &lt;t color='#ffd966'&gt;cloud changes show best when the transition skips a few hours&lt;/t&gt;; weather-only changes to clouds are slower.&lt;br/&gt;The server must also run ZEN. The engine may not rain under low cloud cover.</English>
-            <Chinesesimp>服务器和每位玩家的机器同时一点点推进时间，太阳和阴影平滑移动，不会突然跳变。勾选的天气用同一条时间轴渐变，所以&lt;t color='#ffd966'&gt;云的变化在跳过几个小时的过渡里最明显&lt;/t&gt;；只改天气时云量变化会慢一些。&lt;br/&gt;需要服务器也加载 ZEN。云量低时引擎可能不下雨。</Chinesesimp>
+            <Original>服务器和每位玩家的机器同时一点点推进时间，太阳和阴影平滑移动，不会突然跳变。勾选的天气在过渡时长内跟着时间一起变，&lt;t color='#ffd966'&gt;过渡结束时直接到达目标（这一下会卡一下）&lt;/t&gt;。天气卡住时点「天气立即生效」。&lt;br/&gt;需要服务器也加载 ZEN。云量低时引擎可能不下雨。</Original>
+            <English>The server and every player's machine advance the time in small steps together, so the sun and shadows move smoothly instead of jumping. Checked weather changes along with the time during the transition and &lt;t color='#ffd966'&gt;snaps to its target when it ends (brief hitch)&lt;/t&gt;. If the weather gets stuck, press Apply weather now.&lt;br/&gt;The server must also run ZEN. The engine may not rain under low cloud cover.</English>
+            <Chinesesimp>服务器和每位玩家的机器同时一点点推进时间，太阳和阴影平滑移动，不会突然跳变。勾选的天气在过渡时长内跟着时间一起变，&lt;t color='#ffd966'&gt;过渡结束时直接到达目标（这一下会卡一下）&lt;/t&gt;。天气卡住时点「天气立即生效」。&lt;br/&gt;需要服务器也加载 ZEN。云量低时引擎可能不下雨。</Chinesesimp>
         </Key>
         <Key ID="STR_ZTW_KeybindOpen">
             <Original>打开时间 / 天气过渡</Original>
@@ -246,6 +256,11 @@
             <English>Transition stopped</English>
             <Chinesesimp>已停止过渡</Chinesesimp>
         </Key>
+        <Key ID="STR_ZTW_StatusWeatherApplied">
+            <Original>已让所有人的天气立即生效</Original>
+            <English>Weather applied for everyone</English>
+            <Chinesesimp>已让所有人的天气立即生效</Chinesesimp>
+        </Key>
         <Key ID="STR_ZTW_StatusWeatherOnly">
             <Original>开始天气过渡（%1 秒）</Original>
             <English>Weather transition started (%1 s)</English>
@@ -332,9 +347,9 @@
             <Chinesesimp>天气（跟着时间轴一起渐变）</Chinesesimp>
         </Key>
         <Key ID="STR_ZTW_WeatherTitleTooltip">
-            <Original>勾选的项会在这次过渡里和时间一起渐变，过渡结束时正好到达目标值。没勾选的项不变。</Original>
-            <English>Checked items change together with the time and reach their target exactly when the transition ends. Unchecked items stay as they are.</English>
-            <Chinesesimp>勾选的项会在这次过渡里和时间一起渐变，过渡结束时正好到达目标值。没勾选的项不变。</Chinesesimp>
+            <Original>勾选的项会在过渡时长内和时间一起渐变，过渡结束时直接到达目标值。没勾选的项不变。</Original>
+            <English>Checked items change together with the time during the transition and snap to their target when it ends. Unchecked items stay as they are.</English>
+            <Chinesesimp>勾选的项会在过渡时长内和时间一起渐变，过渡结束时直接到达目标值。没勾选的项不变。</Chinesesimp>
         </Key>
         <Key ID="STR_ZTW_WeatherValueTooltip">
             <Original>目标值 0-1。</Original>

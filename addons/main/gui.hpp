@@ -286,17 +286,26 @@ class ztw_display {
             tooltip = "$STR_ZTW_StartTooltip";
             x = QUOTE(POS_X(5.5));
             y = QUOTE(POS_Y(16.8));
-            w = QUOTE(POS_W(14.3));
+            w = QUOTE(POS_W(10.4));
             colorBackground[] = {0.75, 0.45, 0.05, 1};
         };
         class Stop: ztw_RscButton {
             idc = IDC_ZTW_STOP;
             text = "$STR_ZTW_Stop";
             tooltip = "$STR_ZTW_StopTooltip";
-            x = QUOTE(POS_X(20.2));
+            x = QUOTE(POS_X(16.1));
             y = QUOTE(POS_Y(16.8));
-            w = QUOTE(POS_W(14.3));
+            w = QUOTE(POS_W(9.2));
             colorBackground[] = {0.6, 0.12, 0.12, 1};
+        };
+        class ApplyWeather: ztw_RscButton {
+            idc = IDC_ZTW_APPLY_WEATHER;
+            text = "$STR_ZTW_ApplyWeather";
+            tooltip = "$STR_ZTW_ApplyWeatherTooltip";
+            x = QUOTE(POS_X(25.5));
+            y = QUOTE(POS_Y(16.8));
+            w = QUOTE(POS_W(9));
+            colorBackground[] = {0.2, 0.45, 0.6, 1};
         };
     };
 };

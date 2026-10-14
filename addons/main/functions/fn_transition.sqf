@@ -8,10 +8,10 @@
  * 所以这里在每台机器上用 skipTime 每帧推进一小段时间（太阳、阴影平滑移动），所有机器步调一致，
  * 服务器的同步不会把客户端拉回去。
  *
- * 天气跟着时间轴走：天气命令的过渡时间按游戏时间计算，skipTime 跳过的时间同样会推进天气
- * （官方 wiki 的「skipTime -24; 86400 setOvercast 1; skipTime 24」就是这个原理）。
- * 把天气的过渡时间设成这次过渡总共经过的游戏时间，天气就和太阳一起渐变，过渡结束时正好到达目标。
- * 只改天气（不跳时间）时，天气在设定的现实秒数内按正常时间流逝渐变。
+ * 天气跟着时间轴走：天气（尤其是云）只会随游戏时间的正常流逝变化，每帧一小段的 skipTime 带不动它
+ * （实测从雷暴切到晴天，云量几乎不动，画面一直漆黑）。所以天气的过渡时间设成过渡期间实际流逝的
+ * 游戏时间（过渡时长 × 时间倍率），天气在这几秒里和太阳一起变；过渡结束时每台机器再执行一次
+ * forceWeatherChange，把还没变完的部分直接设到目标值，保证结束时天气一定到位（这一下画面会卡一下）。
  *
  * 其他玩家和服务器没有安装本模组，代码通过 ZEN 的 "zen_common_execute" 事件发送（ZEN 在每台机器上都
  * 注册了这个事件，它自己的「执行代码」模块就用它），不受 CfgRemoteExec 白名单影响，只能用引擎命令。
@@ -81,15 +81,15 @@ if (_hours >= 0) then {
     // 已经跳过的小时数。不放在 _thisArgs 里：不依赖引擎每帧传进来的是不是同一个数组
     missionNamespace setVariable ["ztw_applied", 0];
 
-    // 这次过渡总共经过的游戏时间（秒）：跳过的时间 + 过渡期间正常流逝的时间
-    private _transition = 1 max (_hours * 3600 + _duration * timeMultiplier);
+    // 天气的过渡时间：过渡期间正常流逝的游戏时间（秒）。skipTime 跳过的时间不算，见文件开头
+    private _transition = 1 max (_duration * timeMultiplier);
     {
         _x params ["_name", "_value"];
         [_name, _transition, _value] call _fnc_set;
     } forEach _weather;
 
     addMissionEventHandler ["EachFrame", {
-        _thisArgs params ["_token", "_hours", "_duration", "_ease", "_start"];
+        _thisArgs params ["_token", "_hours", "_duration", "_ease", "_start", "_forceWeather"];
         if (missionNamespace getVariable ["ztw_token", ""] != _token) exitWith {
             removeMissionEventHandler [_thisEvent, _thisEventHandler];
         };
@@ -108,10 +108,15 @@ if (_hours >= 0) then {
         };
 
         if (_progress >= 1) then {
+            // 天气直接到位，并让云层画面跟上
+            if (_forceWeather) then {
+                forceWeatherChange;
+                if (hasInterface) then {simulWeatherSync};
+            };
             missionNamespace setVariable ["ztw_token", ""];
             removeMissionEventHandler [_thisEvent, _thisEventHandler];
         };
-    }, [_token, _hours, 1 max _duration, _ease, diag_tickTime]];
+    }, [_token, _hours, 1 max _duration, _ease, diag_tickTime, _weather isNotEqualTo []]];
 }, [_token, 0 max _hours, _duration, _ease, _weather]]] call CBA_fnc_globalEvent;
 
 _token

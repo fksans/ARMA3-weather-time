@@ -68,7 +68,8 @@ _ctrlPreset ctrlAddEventHandler ["LBSelChanged", {
     [IDC_ZTW_MIDNIGHT, "presetTime", "midnight"],
     [IDC_ZTW_READ_WEATHER, "readWeather"],
     [IDC_ZTW_START, "start"],
-    [IDC_ZTW_STOP, "stop"]
+    [IDC_ZTW_STOP, "stop"],
+    [IDC_ZTW_APPLY_WEATHER, "applyWeatherNow"]
 ];
 
 (_display displayCtrl IDC_ZTW_HINT) ctrlSetStructuredText parseText localize "STR_ZTW_Hint";

@@ -8,6 +8,7 @@ class CfgFunctions {
             class open {};
             // 时间 / 天气过渡（所有机器执行，见 fn_transition）
             class transition {};
+            class applyWeatherNow {};
             // 工具
             class formatClock {};
             class parseClock {};
