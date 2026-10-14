@@ -1,0 +1,34 @@
+name = "Zeus Time & Weather"
+author = "fksans"
+prefix = "ztw"
+mainprefix = "z"
+
+[version]
+path = "addons/main/script_version.hpp"
+git_hash = 0
+
+[files]
+include = [
+    "mod.cpp",
+    "README.md",
+]
+
+[properties]
+author = "fksans"
+
+[hemtt.release]
+folder = "zeus_time_weather"
+
+# ---------------------------------------------------------------------------
+# 固定签名 key（推荐）
+#
+# 默认情况下 HEMTT 每次 `hemtt release` 都会生成一把新的 key，
+# authority 为 `ztw_<版本号>`，也就是说每发一个新版本，服务器就要换一次 .bikey。
+#
+# 想让服务器只装一次 key：在仓库根目录执行一次 `hemtt keys generate`，
+# 按提示保存密码，然后把它输出的那一行 private_key_hash 填到下面并取消注释。
+# 之后每次 release 都会用同一把 key 签名，生成的 key 固定为 `ztw.bikey`。
+# 详见 README.md「签名与 key」一节。
+# ---------------------------------------------------------------------------
+# [signing]
+# private_key_hash = "在这里粘贴 hemtt keys generate 输出的 hash"

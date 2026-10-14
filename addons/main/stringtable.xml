@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ZTW">
+    <Package name="main">
+        <Key ID="STR_ZTW_Close">
+            <Original>关闭</Original>
+            <English>Close</English>
+            <Chinesesimp>关闭</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ContextMenu">
+            <Original>时间 / 天气过渡</Original>
+            <English>Time / weather transition</English>
+            <Chinesesimp>时间 / 天气过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Current">
+            <Original>现在 %1 · 云 %2 · 雾 %3 · 雨 %4 · 风 %5 · 闪电 %6 · 浪 %7</Original>
+            <English>Now %1 · Clouds %2 · Fog %3 · Rain %4 · Wind %5 · Lightning %6 · Waves %7</English>
+            <Chinesesimp>现在 %1 · 云 %2 · 雾 %3 · 雨 %4 · 风 %5 · 闪电 %6 · 浪 %7</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Duration">
+            <Original>过渡时长(秒)</Original>
+            <English>Duration (s)</English>
+            <Chinesesimp>过渡时长(秒)</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_DurationTooltip">
+            <Original>现实时间里这次过渡用多少秒（1-600）。跳 12 小时用 20 秒，太阳就会在 20 秒内平滑地走过去。</Original>
+            <English>Real seconds the transition takes (1-600). Skipping 12 hours over 20 s moves the sun smoothly across the sky in 20 s.</English>
+            <Chinesesimp>现实时间里这次过渡用多少秒（1-600）。跳 12 小时用 20 秒，太阳就会在 20 秒内平滑地走过去。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Ease">
+            <Original>曲线</Original>
+            <English>Curve</English>
+            <Chinesesimp>曲线</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_EaseInOut">
+            <Original>缓入缓出</Original>
+            <English>Ease in / out</English>
+            <Chinesesimp>缓入缓出</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_EaseLinear">
+            <Original>匀速</Original>
+            <English>Linear</English>
+            <Chinesesimp>匀速</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_EaseTooltip">
+            <Original>缓入缓出：开头和结尾慢、中间快，看起来更自然。</Original>
+            <English>Ease in/out: slow at the start and end, fast in the middle; looks more natural.</English>
+            <Chinesesimp>缓入缓出：开头和结尾慢、中间快，看起来更自然。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ErrorDuration">
+            <Original>过渡时长要在 1-600 秒之间</Original>
+            <English>Duration must be 1-600 seconds</English>
+            <Chinesesimp>过渡时长要在 1-600 秒之间</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ErrorNothing">
+            <Original>时间不变，也没有勾选天气，没有要过渡的内容</Original>
+            <English>Time unchanged and no weather checked: nothing to do</English>
+            <Chinesesimp>时间不变，也没有勾选天气，没有要过渡的内容</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ErrorSkipHours">
+            <Original>前进小时数要在 0-240 之间，例如 2.5 或 2:30</Original>
+            <English>Hours to skip must be 0-240, e.g. 2.5 or 2:30</English>
+            <Chinesesimp>前进小时数要在 0-240 之间，例如 2.5 或 2:30</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ErrorTargetTime">
+            <Original>目标时间格式不对，例如 18:30</Original>
+            <English>Invalid target time, e.g. 18:30</English>
+            <Chinesesimp>目标时间格式不对，例如 18:30</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ErrorWeather">
+            <Original>「%1」要在 0-1 之间</Original>
+            <English>"%1" must be between 0 and 1</English>
+            <Chinesesimp>「%1」要在 0-1 之间</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Fog">
+            <Original>雾</Original>
+            <English>Fog</English>
+            <Chinesesimp>雾</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Hint">
+            <Original>服务器和每位玩家的机器同时一点点推进时间，太阳和阴影平滑移动，不会突然跳变。勾选的天气用同一条时间轴渐变，所以&lt;t color='#ffd966'&gt;云的变化在跳过几个小时的过渡里最明显&lt;/t&gt;；只改天气时云量变化会慢一些。&lt;br/&gt;需要服务器也加载 ZEN。云量低时引擎可能不下雨。</Original>
+            <English>The server and every player's machine advance the time in small steps together, so the sun and shadows move smoothly instead of jumping. Checked weather items change on the same timeline, so &lt;t color='#ffd966'&gt;cloud changes show best when the transition skips a few hours&lt;/t&gt;; weather-only changes to clouds are slower.&lt;br/&gt;The server must also run ZEN. The engine may not rain under low cloud cover.</English>
+            <Chinesesimp>服务器和每位玩家的机器同时一点点推进时间，太阳和阴影平滑移动，不会突然跳变。勾选的天气用同一条时间轴渐变，所以&lt;t color='#ffd966'&gt;云的变化在跳过几个小时的过渡里最明显&lt;/t&gt;；只改天气时云量变化会慢一些。&lt;br/&gt;需要服务器也加载 ZEN。云量低时引擎可能不下雨。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_KeybindOpen">
+            <Original>打开时间 / 天气过渡</Original>
+            <English>Open time / weather transition</English>
+            <Chinesesimp>打开时间 / 天气过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_KeybindOpenTooltip">
+            <Original>只有当前是 Zeus（curator）时才能打开。</Original>
+            <English>Only works while you are a Zeus (curator).</English>
+            <Chinesesimp>只有当前是 Zeus（curator）时才能打开。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Lightnings">
+            <Original>闪电</Original>
+            <English>Lightning</English>
+            <Chinesesimp>闪电</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Midnight">
+            <Original>午夜</Original>
+            <English>Midnight</English>
+            <Chinesesimp>午夜</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ModeSkip">
+            <Original>前进时长</Original>
+            <English>Skip ahead</English>
+            <Chinesesimp>前进时长</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ModeSkipTooltip">
+            <Original>往后走「前进(小时)」里填的时长，可以超过 24 小时。</Original>
+            <English>Move forward by the number of hours entered; can be more than 24.</English>
+            <Chinesesimp>往后走「前进(小时)」里填的时长，可以超过 24 小时。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ModeTarget">
+            <Original>到指定时间</Original>
+            <English>To time of day</English>
+            <Chinesesimp>到指定时间</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ModeTargetTooltip">
+            <Original>往后走到下一次出现「目标时间」的时刻（不会倒退）。</Original>
+            <English>Move forward to the next occurrence of the target time (never backwards).</English>
+            <Chinesesimp>往后走到下一次出现「目标时间」的时刻（不会倒退）。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ModuleCategory">
+            <Original>时间天气</Original>
+            <English>Time &amp; weather</English>
+            <Chinesesimp>时间天气</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ModuleName">
+            <Original>时间 / 天气过渡</Original>
+            <English>Time / weather transition</English>
+            <Chinesesimp>时间 / 天气过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_NoSunriseSunset">
+            <Original>今天是极昼或极夜，没有日出日落</Original>
+            <English>Polar day or night: no sunrise / sunset today</English>
+            <Chinesesimp>今天是极昼或极夜，没有日出日落</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Noon">
+            <Original>正午</Original>
+            <English>Noon</English>
+            <Chinesesimp>正午</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_NotCurator">
+            <Original>[Zeus 时间天气] 只有 Zeus（curator）才能打开时间 / 天气过渡。</Original>
+            <English>[Zeus Time &amp; Weather] Only a Zeus (curator) can open the time / weather transition.</English>
+            <Chinesesimp>[Zeus 时间天气] 只有 Zeus（curator）才能打开时间 / 天气过渡。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Overcast">
+            <Original>云量</Original>
+            <English>Clouds</English>
+            <Chinesesimp>云量</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PresetClear">
+            <Original>晴朗</Original>
+            <English>Clear</English>
+            <Chinesesimp>晴朗</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PresetCloudy">
+            <Original>多云</Original>
+            <English>Cloudy</English>
+            <Chinesesimp>多云</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PresetFog">
+            <Original>晨雾</Original>
+            <English>Morning fog</English>
+            <Chinesesimp>晨雾</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PresetOvercast">
+            <Original>阴天</Original>
+            <English>Overcast</English>
+            <Chinesesimp>阴天</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PresetRain">
+            <Original>下雨</Original>
+            <English>Rain</English>
+            <Chinesesimp>下雨</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PresetStorm">
+            <Original>暴风雨</Original>
+            <English>Storm</English>
+            <Chinesesimp>暴风雨</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Preview">
+            <Original>%1 → %2（+%3，%4 秒）</Original>
+            <English>%1 → %2 (+%3 over %4 s)</English>
+            <Chinesesimp>%1 → %2（+%3，%4 秒）</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_PreviewWeatherOnly">
+            <Original>只改天气（%1 秒）</Original>
+            <English>Weather only (%1 s)</English>
+            <Chinesesimp>只改天气（%1 秒）</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Progress">
+            <Original>过渡中 %1%</Original>
+            <English>transitioning %1%</English>
+            <Chinesesimp>过渡中 %1%</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Rain">
+            <Original>雨</Original>
+            <English>Rain</English>
+            <Chinesesimp>雨</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ReadWeather">
+            <Original>读取当前</Original>
+            <English>Read current</English>
+            <Chinesesimp>读取当前</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_ReadWeatherTooltip">
+            <Original>把现在的天气值填进下面的输入框（不改变勾选）。</Original>
+            <English>Fill the boxes below with the current weather values (checkboxes unchanged).</English>
+            <Chinesesimp>把现在的天气值填进下面的输入框（不改变勾选）。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_SkipHours">
+            <Original>前进(小时)</Original>
+            <English>Skip (hours)</English>
+            <Chinesesimp>前进(小时)</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_SkipHoursTooltip">
+            <Original>例如 2.5 或 2:30，最多 240。填 0 只改天气。</Original>
+            <English>e.g. 2.5 or 2:30, at most 240. 0 = weather only.</English>
+            <Chinesesimp>例如 2.5 或 2:30，最多 240。填 0 只改天气。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Start">
+            <Original>开始过渡</Original>
+            <English>Start transition</English>
+            <Chinesesimp>开始过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StartTooltip">
+            <Original>发给所有人（包括服务器）。正在进行的过渡会被新的取代。</Original>
+            <English>Sent to everyone, including the server. A transition already running is replaced.</English>
+            <Chinesesimp>发给所有人（包括服务器）。正在进行的过渡会被新的取代。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StatusReadWeather">
+            <Original>已读取当前天气</Original>
+            <English>Current weather read</English>
+            <Chinesesimp>已读取当前天气</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StatusStarted">
+            <Original>开始过渡到 %1（%2 秒）</Original>
+            <English>Transitioning to %1 (%2 s)</English>
+            <Chinesesimp>开始过渡到 %1（%2 秒）</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StatusStopped">
+            <Original>已停止过渡</Original>
+            <English>Transition stopped</English>
+            <Chinesesimp>已停止过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StatusWeatherOnly">
+            <Original>开始天气过渡（%1 秒）</Original>
+            <English>Weather transition started (%1 s)</English>
+            <Chinesesimp>开始天气过渡（%1 秒）</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StatusWithWeather">
+            <Original>，天气一起渐变</Original>
+            <English>, weather follows</English>
+            <Chinesesimp>，天气一起渐变</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Stop">
+            <Original>停止过渡</Original>
+            <English>Stop transition</English>
+            <Chinesesimp>停止过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_StopTooltip">
+            <Original>时间和天气停在现在的样子。</Original>
+            <English>Time and weather stay where they are now.</English>
+            <Chinesesimp>时间和天气停在现在的样子。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Sunrise">
+            <Original>日出</Original>
+            <English>Sunrise</English>
+            <Chinesesimp>日出</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_SunriseTooltip">
+            <Original>按当前地图的纬度和日期计算的日出时间。</Original>
+            <English>Sunrise time for this map's latitude and today's date.</English>
+            <Chinesesimp>按当前地图的纬度和日期计算的日出时间。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Sunset">
+            <Original>日落</Original>
+            <English>Sunset</English>
+            <Chinesesimp>日落</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_SunsetTooltip">
+            <Original>按当前地图的纬度和日期计算的日落时间。</Original>
+            <English>Sunset time for this map's latitude and today's date.</English>
+            <Chinesesimp>按当前地图的纬度和日期计算的日落时间。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_TargetTime">
+            <Original>目标时间</Original>
+            <English>Target</English>
+            <Chinesesimp>目标时间</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_TargetTimeTooltip">
+            <Original>24 小时制，例如 18:30 或 6（半角冒号）。和现在相同时只改天气。</Original>
+            <English>24-hour clock, e.g. 18:30 or 6. If it equals the current time, only the weather changes.</English>
+            <Chinesesimp>24 小时制，例如 18:30 或 6（半角冒号）。和现在相同时只改天气。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Title">
+            <Original>时间 / 天气过渡</Original>
+            <English>Time / weather transition</English>
+            <Chinesesimp>时间 / 天气过渡</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Waves">
+            <Original>海浪</Original>
+            <English>Waves</English>
+            <Chinesesimp>海浪</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherCheckTooltip">
+            <Original>勾选后这一项参与过渡。</Original>
+            <English>Check to include this item in the transition.</English>
+            <Chinesesimp>勾选后这一项参与过渡。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherPreset">
+            <Original>预设</Original>
+            <English>Preset</English>
+            <Chinesesimp>预设</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherPresetPick">
+            <Original>选择预设…</Original>
+            <English>Pick a preset…</English>
+            <Chinesesimp>选择预设…</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherPresetTooltip">
+            <Original>选一个预设会填好并勾选全部天气项，之后还可以再改。</Original>
+            <English>Picking a preset fills in and checks every weather item; you can still edit them.</English>
+            <Chinesesimp>选一个预设会填好并勾选全部天气项，之后还可以再改。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherTitle">
+            <Original>天气（跟着时间轴一起渐变）</Original>
+            <English>Weather (follows the timeline)</English>
+            <Chinesesimp>天气（跟着时间轴一起渐变）</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherTitleTooltip">
+            <Original>勾选的项会在这次过渡里和时间一起渐变，过渡结束时正好到达目标值。没勾选的项不变。</Original>
+            <English>Checked items change together with the time and reach their target exactly when the transition ends. Unchecked items stay as they are.</English>
+            <Chinesesimp>勾选的项会在这次过渡里和时间一起渐变，过渡结束时正好到达目标值。没勾选的项不变。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_WeatherValueTooltip">
+            <Original>目标值 0-1。</Original>
+            <English>Target value 0-1.</English>
+            <Chinesesimp>目标值 0-1。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ZTW_Wind">
+            <Original>风力</Original>
+            <English>Wind</English>
+            <Chinesesimp>风力</Chinesesimp>
+        </Key>
+    </Package>
+</Project>

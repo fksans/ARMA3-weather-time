@@ -1,0 +1,16 @@
+# `hemtt launch`：开发构建并启动游戏（带 CBA + ZEN）
+[default]
+workshop = [
+    "450814997",  # CBA_A3
+    "1779063631", # ZEN (Zeus Enhanced)
+]
+parameters = [
+    "-showScriptErrors",
+]
+
+# `hemtt launch ace`：再加上 ACE3，模拟服务器环境
+[ace]
+extends = "default"
+workshop = [
+    "463939057", # ACE3
+]
