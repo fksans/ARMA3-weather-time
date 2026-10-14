@@ -23,6 +23,7 @@
 #define IDC_ZTW_HINT 2080
 #define IDC_ZTW_START 2090
 #define IDC_ZTW_STOP 2091
+#define IDC_ZTW_APPLY_WEATHER 2092
 
 // 40 x 25 居中网格（与原版 GUI_GRID_CENTER 相同）
 #define GRID_AREA_W ((safezoneW / safezoneH) min 1.2)

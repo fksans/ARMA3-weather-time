@@ -75,6 +75,10 @@ switch (_action) do {
         [-1] call ztw_fnc_transition;
         [localize "STR_ZTW_StatusStopped"] call ztw_fnc_ui_setStatus;
     };
+    case "applyWeatherNow": {
+        call ztw_fnc_applyWeatherNow;
+        [localize "STR_ZTW_StatusWeatherApplied"] call ztw_fnc_ui_setStatus;
+    };
 };
 
 [] call ztw_fnc_ui_update;
