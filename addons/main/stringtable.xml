@@ -7,9 +7,9 @@
             <Chinesesimp>天气立即生效</Chinesesimp>
         </Key>
         <Key ID="STR_ZTW_ApplyWeatherTooltip">
-            <Original>所有人（包括服务器）跳过剩下的天气渐变，马上到达目标天气，并刷新云层画面（会卡一下）。天气卡住不变、或者换成晴天后画面还是漆黑时用。</Original>
-            <English>Everyone (including the server) skips the rest of the weather change, jumps straight to the target weather and refreshes the cloud rendering (brief hitch). Use it when the weather seems stuck, e.g. still pitch black after switching to clear.</English>
-            <Chinesesimp>所有人（包括服务器）跳过剩下的天气渐变，马上到达目标天气，并刷新云层画面（会卡一下）。天气卡住不变、或者换成晴天后画面还是漆黑时用。</Chinesesimp>
+            <Original>过渡进行中：所有人（包括服务器）跳过剩下的天气渐变，勾选的项马上到达目标。没有过渡在进行时：天气保持现在的值，只刷新云层画面。都会卡一下。云的画面卡住、换成晴天后画面还是漆黑时用。</Original>
+            <English>During a transition: everyone (including the server) skips the rest of the weather change and the checked items jump to their targets. With no transition running: the weather keeps its current values and only the cloud rendering is refreshed. Either way there is a brief hitch. Use it when the clouds look stuck, e.g. still pitch black after switching to clear.</English>
+            <Chinesesimp>过渡进行中：所有人（包括服务器）跳过剩下的天气渐变，勾选的项马上到达目标。没有过渡在进行时：天气保持现在的值，只刷新云层画面。都会卡一下。云的画面卡住、换成晴天后画面还是漆黑时用。</Chinesesimp>
         </Key>
         <Key ID="STR_ZTW_Close">
             <Original>关闭</Original>

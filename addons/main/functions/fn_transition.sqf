@@ -13,6 +13,9 @@
  * 游戏时间（过渡时长 × 时间倍率），天气在这几秒里和太阳一起变；过渡结束时每台机器再执行一次
  * forceWeatherChange，把还没变完的部分直接设到目标值，保证结束时天气一定到位（这一下画面会卡一下）。
  *
+ * forceWeatherChange 会把所有天气（不只是勾选的项）拉到「预报值」，而引擎在对局中会自己随机改预报，
+ * 对局开得久了可能随机出浓雾。所以开始和结束时都先把没勾选的项的预报锁成当前值，只让勾选的项变。
+ *
  * 其他玩家和服务器没有安装本模组，代码通过 ZEN 的 "zen_common_execute" 事件发送（ZEN 在每台机器上都
  * 注册了这个事件，它自己的「执行代码」模块就用它），不受 CfgRemoteExec 白名单影响，只能用引擎命令。
  * 服务器也必须加载 ZEN，否则服务器时间不变，客户端会被同步回去。
@@ -39,32 +42,10 @@ if (_hours >= 0) then {
 ["zen_common_execute", [{
     params ["_token", "_hours", "_duration", "_ease", "_weather"];
 
-    private _fnc_get = {
-        switch (_this) do {
-            case "overcast": {overcast};
-            case "fog": {fog};
-            case "rain": {rain};
-            case "windStr": {windStr};
-            case "lightnings": {lightnings};
-            case "waves": {waves};
-            default {0};
-        };
-    };
-    private _fnc_set = {
-        params ["_name", "_time", "_value"];
-        switch (_name) do {
-            case "overcast": {_time setOvercast _value};
-            case "fog": {
-                // 保留任务设置的雾衰减 / 雾高度，只改浓度
-                fogParams params ["", "_decay", "_base"];
-                _time setFog [_value, _decay, _base];
-            };
-            case "rain": {_time setRain _value};
-            case "windStr": {_time setWindStr _value};
-            case "lightnings": {_time setLightnings _value};
-            case "waves": {_time setWaves _value};
-        };
-    };
+    // 雾只改浓度，保留任务设置的雾衰减 / 雾高度（见 WEATHER_FNC_SET）
+    private _fnc_get = WEATHER_FNC_GET;
+    private _fnc_set = WEATHER_FNC_SET;
+    private _fnc_pinOthers = WEATHER_FNC_PIN_OTHERS;
 
     // 上一次过渡还没结束：把它的天气目标改成当前值，停在这里（否则会继续慢慢变过去）
     if (missionNamespace getVariable ["ztw_token", ""] != "") then {
@@ -83,13 +64,15 @@ if (_hours >= 0) then {
 
     // 天气的过渡时间：过渡期间正常流逝的游戏时间（秒）。skipTime 跳过的时间不算，见文件开头
     private _transition = 1 max (_duration * timeMultiplier);
+    private _keep = _weather apply {_x select 0};
+    if (_weather isNotEqualTo []) then {_keep call _fnc_pinOthers};
     {
         _x params ["_name", "_value"];
         [_name, _transition, _value] call _fnc_set;
     } forEach _weather;
 
     addMissionEventHandler ["EachFrame", {
-        _thisArgs params ["_token", "_hours", "_duration", "_ease", "_start", "_forceWeather"];
+        _thisArgs params ["_token", "_hours", "_duration", "_ease", "_start", "_keep", "_fnc_get", "_fnc_set", "_fnc_pinOthers"];
         if (missionNamespace getVariable ["ztw_token", ""] != _token) exitWith {
             removeMissionEventHandler [_thisEvent, _thisEventHandler];
         };
@@ -108,15 +91,16 @@ if (_hours >= 0) then {
         };
 
         if (_progress >= 1) then {
-            // 天气直接到位，并让云层画面跟上
-            if (_forceWeather) then {
+            // 勾选的天气直接到位，并让云层画面跟上；没勾选的项先锁住，不被拉到引擎的随机预报
+            if (_keep isNotEqualTo []) then {
+                _keep call _fnc_pinOthers;
                 forceWeatherChange;
                 if (hasInterface) then {simulWeatherSync};
             };
             missionNamespace setVariable ["ztw_token", ""];
             removeMissionEventHandler [_thisEvent, _thisEventHandler];
         };
-    }, [_token, _hours, 1 max _duration, _ease, diag_tickTime, _weather isNotEqualTo []]];
+    }, [_token, _hours, 1 max _duration, _ease, diag_tickTime, _keep, _fnc_get, _fnc_set, _fnc_pinOthers]];
 }, [_token, 0 max _hours, _duration, _ease, _weather]]] call CBA_fnc_globalEvent;
 
 _token
